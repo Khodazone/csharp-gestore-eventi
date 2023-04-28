@@ -49,11 +49,28 @@ namespace GestoreEventi
 
         public void SetData(DateTime data)
         {
+            if (data < DateTime.Today)
+            {
+                throw new Exception("La data è già passata");
+            }
+
             this.data = data;
         }
 
+        public void SetCapienzaMassimaEvento(int capienzaMassimaEvento)
+        {
+            if (capienzaMassimaEvento <= 0)
+            {
+                throw new Exception("La capienza dei posti non può essere negativa o zero");
+            }
+            this.capienzaMassimaEvento = capienzaMassimaEvento;
+        }
 
-        //COSTRUTTORI
 
+        //COSTRUTTORE
+        public Evento(string titolo, DateTime data, int capienzaMassimaEvento)
+        {
+
+        }
     }
 }
