@@ -1,12 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using GestoreEventi;
 
-public class Program
+try
 {
-    Console.WriteLine("Crea evento");
-Console.WriteLine("Inserisci il titolo dell'evento:");
-string nomeEvento = Console.ReadLine();
-    Console.WriteLine("Inserisci la data delle evento yyyy/mm/dd");
-DateTime data = Convert.ToDateTime(Console.ReadLine());
-    Console.WriteLine("Inserisci la capienza massima dell'evento");
-int capienzaMassimaEvento = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("ciao a tutti");
+    Evento Evento = new Evento("Conferenza sul clima", 20/12/2022, 150, 0, 150);
+    Console.WriteLine(Evento);
 }
+catch (Exception exception)
+{
+    Console.WriteLine("è successo qualcosa di brutto:" + exception.Message);
+}
+
+
+Console.WriteLine("bene è finito il programma");
