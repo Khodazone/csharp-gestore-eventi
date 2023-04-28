@@ -10,7 +10,7 @@ namespace GestoreEventi
     {
         //ATTRIBUTI
         private string titolo;
-        private DateTime data;
+        public DateTime data;
         private int capienzaMassimaEvento;
         private int numeroPostiPrenotati;
         private int numeroPostiLiberi;
@@ -67,7 +67,7 @@ namespace GestoreEventi
         {
             if (capienzaMassimaEvento <= 0)
             {
-                throw new Exception("La capienza dei posti non può essere negativa o zero");
+                throw new Exception("La capienza dei posti non può essere negativa o essere zero");
             }
             this.capienzaMassimaEvento = newCapienzaMassimaEvento;
         }
@@ -92,7 +92,7 @@ namespace GestoreEventi
 
 
         //COSTRUTTORE
-        public Evento(string titolo, DateTime data, int capienzaMassimaEvento, int numeroPostiPrenotati, int numeroPostiLiberi)
+        public Evento(string titolo, DateTime data, int capienzaMassimaEvento)
         {
             this.titolo = titolo;
             this.data = data;
@@ -105,7 +105,7 @@ namespace GestoreEventi
         //METODI
         public void PrenotaPosti(int postiDaAggiungere)
         {
-            if ((capienzaMassimaEvento == 0) || (data < DateTime.Today) || ((capienzaMassimaEvento - postiDaAggiungere) <= 0))
+            if (capienzaMassimaEvento == 0 || data < DateTime.Today || capienzaMassimaEvento - postiDaAggiungere <= 0)
             {
                 Console.WriteLine("Non si può prenotare");
             }
@@ -158,7 +158,7 @@ namespace GestoreEventi
         }
         public override string ToString()
         {
-            return "Titolo evento: " + titolo + " Data: " + data.ToString();
+            return "Titolo evento: " + titolo + "\nData: " + data.ToString();
         }
 
         public void StampaPosti()
